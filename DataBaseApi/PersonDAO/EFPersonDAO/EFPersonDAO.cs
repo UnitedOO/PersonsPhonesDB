@@ -19,11 +19,16 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
 
         public void Update(Person model)
         {
+            EFPhoneDAO phoneDAO = new EFPhoneDAO();
             using (PersonsPhonesContext context = new PersonsPhonesContext())
             {
                 Person original = context.Persons.FirstOrDefault(x => x.Id == model.Id);
                 context.Entry(original).CurrentValues.SetValues(model);
                 context.SaveChanges();
+                foreach (var phone in model.Phones)
+                {
+                    phoneDAO.Update(phone);
+                }
             }
         }
 
