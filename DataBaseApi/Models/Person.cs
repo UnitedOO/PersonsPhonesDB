@@ -21,6 +21,7 @@ namespace DataBaseApi.Models
 
         public Person(int id, string firstName, string lastName, int age)
         {
+            Phones = new HashSet<Phone>();
             this.Id = id;
             this.FirstName = firstName;
             this.LastName = lastName;
