@@ -45,6 +45,7 @@
             this.dataGridDB.Location = new System.Drawing.Point(9, 54);
             this.dataGridDB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridDB.Name = "dataGridDB";
+            this.dataGridDB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridDB.Size = new System.Drawing.Size(688, 310);
             this.dataGridDB.TabIndex = 1;
             this.dataGridDB.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDB_CellDoubleClick);

@@ -39,10 +39,16 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
 
         public void Create(Person model)
         {
+            EFPhoneDAO phoneDAO = new EFPhoneDAO();
             using (PersonsPhonesContext context = new PersonsPhonesContext())
             {
                 context.Persons.Add(model);
                 context.SaveChanges();
+                foreach (var phone in model.Phones)
+                {
+                    phone.PersonId = model.Id;
+                    phoneDAO.Create(phone);
+                }
             }
         }
     }
