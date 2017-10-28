@@ -2,13 +2,14 @@
 using DataBaseApi.Models;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace DataBaseWF
 {
     public class TableModel
     {
         IDAO<Person> db = null;
-
+        
         public TableModel(string type)
         {
             db = DBFactory.GetInstance(type);
@@ -35,6 +36,11 @@ namespace DataBaseWF
             }
 
             return dataTable;
+        }
+
+        public void ClearTable(DataGridView dgv)
+        {
+            dgv.DataSource = new DataTable();
         }
     }
 }

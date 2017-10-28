@@ -7,7 +7,7 @@ using DataBaseApi.Models;
 
 namespace DataBaseApi.PersonDAO.EFPersonDAO
 {
-    class EFPersonDAO : IDAO<Person>
+    public class EFPersonDAO : IDAO<Person>
     {
         public List<Person> Read()
         {
