@@ -9,6 +9,7 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
 {
     public class EFPersonDAO : IDAO<Person>
     {
+        EFPhoneDAO phoneDAO = new EFPhoneDAO();
         public List<Person> Read()
         {
             using (PersonsPhonesContext context = new PersonsPhonesContext())
@@ -19,7 +20,6 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
 
         public void Update(Person model)
         {
-            EFPhoneDAO phoneDAO = new EFPhoneDAO();
             using (PersonsPhonesContext context = new PersonsPhonesContext())
             {
                 Person original = context.Persons.FirstOrDefault(x => x.Id == model.Id);
@@ -34,7 +34,6 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
 
         public void Delete(Person model)
         {
-            EFPhoneDAO phoneDAO = new EFPhoneDAO();
             using (PersonsPhonesContext context = new PersonsPhonesContext())
             {
                 foreach (var phone in model.Phones)
@@ -49,7 +48,6 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
 
         public void Create(Person model)
         {
-            EFPhoneDAO phoneDAO = new EFPhoneDAO();
             using (PersonsPhonesContext context = new PersonsPhonesContext())
             {
                 context.Persons.Add(model);

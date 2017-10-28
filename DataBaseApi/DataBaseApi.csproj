@@ -70,6 +70,8 @@
     <Compile Include="PersonDAO\EFPersonDAO\EFPhoneDAO.cs" />
     <Compile Include="PersonDAO\EFPersonDAO\PersonsPhonesContext.cs" />
     <Compile Include="PersonDAO\MockPersonDAO.cs" />
+    <Compile Include="PersonDAO\MSPersonDAO\MSPersonDAO.cs" />
+    <Compile Include="PersonDAO\SQLPersonDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
