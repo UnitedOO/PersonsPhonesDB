@@ -36,8 +36,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tb_id = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDB)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,31 +118,11 @@
             this.btnSearch.Text = "SEARCH";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(549, 373);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 15);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "ID:";
-            // 
-            // tb_id
-            // 
-            this.tb_id.Location = new System.Drawing.Point(577, 372);
-            this.tb_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tb_id.Name = "tb_id";
-            this.tb_id.Size = new System.Drawing.Size(119, 20);
-            this.tb_id.TabIndex = 25;
-            // 
             // FormMulti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 415);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.tb_id);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
@@ -171,8 +149,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tb_id;
     }
 }
 

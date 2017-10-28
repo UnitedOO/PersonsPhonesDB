@@ -34,8 +34,13 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
 
         public void Delete(Person model)
         {
+            EFPhoneDAO phoneDAO = new EFPhoneDAO();
             using (PersonsPhonesContext context = new PersonsPhonesContext())
             {
+                foreach (var phone in model.Phones)
+                {
+                    phoneDAO.Delete(phone);
+                }
                 Person pToDel = context.Persons.First(x => x.Id == model.Id);
                 context.Persons.Remove(pToDel);
                 context.SaveChanges();
