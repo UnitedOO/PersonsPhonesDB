@@ -7,7 +7,7 @@ using DataBaseApi.Models;
 
 namespace DataBaseApi.PersonDAO
 {
-    class MockPersonDAO : IDAO<Person>
+    public class MockPersonDAO : IDAO<Person>
     {
         readonly SortedDictionary<int, Person> _people;
         public MockPersonDAO()

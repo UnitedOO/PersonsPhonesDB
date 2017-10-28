@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseApi
 {
-    interface IDAO<TModel>
+    public interface IDAO<TModel>
     {
         List<TModel> Read();
         void Update(TModel model);

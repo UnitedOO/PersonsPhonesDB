@@ -8,7 +8,7 @@ using DataBaseApi.PersonDAO;
 
 namespace DataBaseApi
 {
-    class DbFactory
+    public class DBFactory
     {
         public static IDAO<Person> GetInstance(string type)
         {
