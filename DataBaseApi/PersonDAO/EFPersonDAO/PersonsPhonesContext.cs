@@ -9,7 +9,7 @@ using DataBaseApi.Models;
 
 namespace DataBaseApi.PersonDAO.EFPersonDAO
 {
-    class PersonsPhonesContext : DbContext
+    public class PersonsPhonesContext : DbContext
     {
         public PersonsPhonesContext() : base(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Path.GetFullPath(@"..\..\..\DataBaseApi\LocalDBs\PersonsPhonesDB.mdf") + ";Integrated Security=True;")
         {

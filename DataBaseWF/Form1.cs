@@ -26,11 +26,12 @@ namespace DataBaseWF
             tableModel = new TableModel("Mock");
         }
 
+        
         private void btncreate_Click(object sender, EventArgs e)
         {
             FormSingle fSingle = new FormSingle();
             fSingle.Show();
-           
+
         }
 
         private void dataGridDB_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -42,6 +43,12 @@ namespace DataBaseWF
         private void btnread_Click(object sender, EventArgs e)
         {
             dataGridDB.DataSource = tableModel.Read();
+        }
+
+        private void SelectDB(object sender, EventArgs e)
+        {
+            tableModel = new TableModel(DBSwitch.SelectedItem.ToString());
+            tableModel.ClearTable(dataGridDB);
         }
     }
 }
