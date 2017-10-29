@@ -15,47 +15,57 @@ namespace DataBaseWF
     {
         private Person person = null;
         private Phone phone = null;
-        public TableModel tableModel = new TableModel();
-      
-        public FormSingle()
+        public TableModel tableModel;
+
+        public FormSingle(TableModel tableModel, Person person)
         {
             InitializeComponent();
+            this.tableModel = tableModel;
+            this.person = person;
+
+            if (person.Id != 0)
+            {
+                btnUpdate.Visible = true;
+                btnCreate.Visible = false;
+
+                txtId.Text += person.Id.ToString();
+                txtFirstName.Text += person.FirstName;
+                txtLastName.Text += person.LastName;
+                txtAge.Text += person.Age.ToString();
+            }
+            else
+            {
+                txtFirstName.Text += person.FirstName;
+                txtLastName.Text += person.LastName;
+            }
+                   
         }
 
         private Person GetPerson()
         {
-            int id = Int32.Parse(txtId.Text);
-            string fn = txtFirstName.Text;
-            string ln = txtLastName.Text;
-            int age = Int32.Parse(txtAge.Text);
-            return new Person(id, fn, ln, age);
+            person.FirstName = txtFirstName.Text;
+            person.LastName = txtLastName.Text;
+            person.Age = Int32.Parse(txtAge.Text);
+            return person;
         }
 
-        public void AddPersonInf(Person person)
-        {
-            btnUpdate.Visible=true;
-            btnCreate.Visible = false;
-            this.person = person;
-
-            txtId.Text += person.Id.ToString();
-            txtFirstName.Text += person.FirstName;
-            txtLastName.Text += person.LastName;
-            txtAge.Text += person.Age.ToString();
-
-        }
-
-      
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-         //   tableModel.Update(GetPerson());
+            tableModel.Update(GetPerson());
             this.Close();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-          //  tableModel.Create(GetPerson());
-           
+            tableModel.Create(GetPerson());
             this.Close();
+
+        }
+
+        private void btnAddPhone_Click(object sender, EventArgs e)
+        {
+            listPhones.Items.Add(txtPhone.Text);
+            txtPhone.Text = "";
         }
     }
 }

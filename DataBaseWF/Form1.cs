@@ -36,9 +36,8 @@ namespace DataBaseWF
 
         private void btncreate_Click(object sender, EventArgs e)
         {
-            FormSingle fSingle = new FormSingle();
+            FormSingle fSingle = new FormSingle(tableModel, new Person(0, "", "", 0));
             fSingle.Show();
-
         }
 
         private void btnread_Click(object sender, EventArgs e)
@@ -54,19 +53,16 @@ namespace DataBaseWF
 
         private void dataGridDB_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            FormSingle fSingle = new FormSingle();
-
             int index = e.RowIndex;
             int id = Int32.Parse(dataGridDB.Rows[index].Cells[0].Value.ToString());
             foreach (Person p in tableModel.ReturnPersons())
             {
                 if (id == p.Id)
                 {
-                    fSingle.AddPersonInf(p);
+                    FormSingle fSingle = new FormSingle(tableModel, p);
+                    fSingle.Show();
                 }
             }
-
-            fSingle.Show();
         }
     }
 }

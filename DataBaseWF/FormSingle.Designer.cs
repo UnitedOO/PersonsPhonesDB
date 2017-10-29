@@ -65,6 +65,7 @@
             this.btnAddPhone.TabIndex = 40;
             this.btnAddPhone.Text = "+";
             this.btnAddPhone.UseVisualStyleBackColor = true;
+            this.btnAddPhone.Click += new System.EventHandler(this.btnAddPhone_Click);
             // 
             // label5
             // 
@@ -124,6 +125,7 @@
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtId.Location = new System.Drawing.Point(84, 21);
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(192, 21);
             this.txtId.TabIndex = 71;
             // 
