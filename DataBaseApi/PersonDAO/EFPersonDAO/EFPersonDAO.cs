@@ -28,7 +28,10 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
                 context.SaveChanges();
                 foreach (var phone in model.Phones)
                 {
-                    phoneDAO.Update(phone);
+                    if (phone.Id == 0)
+                        phoneDAO.Create(phone);
+                    else
+                        phoneDAO.Update(phone);
                 }
             }
         }
