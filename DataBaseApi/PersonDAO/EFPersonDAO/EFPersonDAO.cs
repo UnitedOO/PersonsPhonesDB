@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
         {
             using (PersonsPhonesContext context = new PersonsPhonesContext())
             {
-                return context.Persons.ToList();
+                return context.Persons.Include(p=>p.Phones).ToList();
             }
         }
 

@@ -15,6 +15,10 @@ namespace DataBaseApi.Models
 
         public virtual Person Person { get; set; }
 
+        public Phone()
+        {
+            
+        }
         public Phone(int id, string number, int personId)
         {
             Id = id;
