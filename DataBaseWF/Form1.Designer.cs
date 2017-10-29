@@ -48,10 +48,11 @@
             this.dataGridDB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridDB.Size = new System.Drawing.Size(688, 310);
             this.dataGridDB.TabIndex = 1;
-            this.dataGridDB.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDB_CellDoubleClick);
+            this.dataGridDB.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridDB_RowHeaderMouseDoubleClick);
             // 
             // btncreate
             // 
+            this.btncreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btncreate.Location = new System.Drawing.Point(9, 372);
             this.btncreate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btncreate.Name = "btncreate";
@@ -63,6 +64,7 @@
             // 
             // btnread
             // 
+            this.btnread.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnread.Location = new System.Drawing.Point(215, 14);
             this.btnread.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnread.Name = "btnread";
@@ -74,6 +76,7 @@
             // 
             // btndelete
             // 
+            this.btndelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btndelete.Location = new System.Drawing.Point(423, 372);
             this.btndelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btndelete.Name = "btndelete";
@@ -86,7 +89,7 @@
             // 
             this.DBSwitch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DBSwitch.FormattingEnabled = true;
-            this.DBSwitch.Location = new System.Drawing.Point(89, 17);
+            this.DBSwitch.Location = new System.Drawing.Point(90, 17);
             this.DBSwitch.Name = "DBSwitch";
             this.DBSwitch.Size = new System.Drawing.Size(120, 21);
             this.DBSwitch.TabIndex = 14;
@@ -95,9 +98,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(14, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(76, 15);
             this.label1.TabIndex = 15;
             this.label1.Text = "SELECT DB:";
             // 
@@ -110,6 +114,7 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSearch.Location = new System.Drawing.Point(577, 14);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";

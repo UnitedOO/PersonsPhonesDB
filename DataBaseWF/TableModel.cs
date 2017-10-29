@@ -10,9 +10,19 @@ namespace DataBaseWF
     {
         IDAO<Person> db = null;
         
-        public TableModel(string type)
+        public void SetDataBase(string type)
         {
             db = DBFactory.GetInstance(type);
+        }
+
+        public void Create(Person person)
+        {
+           db.Create(person);
+        }
+
+        public void Update(Person person)
+        {
+            db.Update(person);
         }
 
         public DataTable Read()
@@ -41,6 +51,12 @@ namespace DataBaseWF
         public void ClearTable(DataGridView dgv)
         {
             dgv.DataSource = new DataTable();
+        }
+
+        public List<Person> ReturnPersons()
+        {
+            List<Person> listPerson = db.Read();
+            return listPerson;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataBaseApi.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace DataBaseWF
 {
     public partial class FormMulti : Form
     {
-        TableModel tableModel = null;
+        TableModel tableModel = new TableModel();
         public FormMulti()
         {
             InitializeComponent();
@@ -23,21 +24,21 @@ namespace DataBaseWF
                 DBSwitch.Items.Add(t);
             }
             DBSwitch.SelectedIndex = 0;
-            tableModel = new TableModel("Mock");
+            tableModel.SetDataBase("Mock");
+
         }
 
-        
+        private Person GetPerson()
+        {
+
+            return new Person();
+        }
+
         private void btncreate_Click(object sender, EventArgs e)
         {
             FormSingle fSingle = new FormSingle();
             fSingle.Show();
 
-        }
-
-        private void dataGridDB_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            FormSingle fSingle = new FormSingle();
-            fSingle.Show();
         }
 
         private void btnread_Click(object sender, EventArgs e)
@@ -47,8 +48,25 @@ namespace DataBaseWF
 
         private void SelectDB(object sender, EventArgs e)
         {
-            tableModel = new TableModel(DBSwitch.SelectedItem.ToString());
-            tableModel.ClearTable(dataGridDB);
+            tableModel.SetDataBase(DBSwitch.SelectedItem.ToString());
+            dataGridDB.DataSource = null;
+        }
+
+        private void dataGridDB_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            FormSingle fSingle = new FormSingle();
+
+            int index = e.RowIndex;
+            int id = Int32.Parse(dataGridDB.Rows[index].Cells[0].Value.ToString());
+            foreach (Person p in tableModel.ReturnPersons())
+            {
+                if (id == p.Id)
+                {
+                    fSingle.AddPersonInf(p);
+                }
+            }
+
+            fSingle.Show();
         }
     }
 }

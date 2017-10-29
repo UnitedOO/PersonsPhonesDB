@@ -16,7 +16,7 @@ namespace DataBaseApi.Models
 
         public Person()
         {
-            Phones = new HashSet<Phone>();
+           Phones = new HashSet<Phone>();
         }
 
         public Person(int id, string firstName, string lastName, int age)
