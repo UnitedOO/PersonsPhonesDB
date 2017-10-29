@@ -9,7 +9,8 @@ namespace DataBaseWF
     public class TableModel
     {
         IDAO<Person> db = null;
-        
+        IDAO<Phone> dbPhone = null;
+
         public void SetDataBase(string type)
         {
             db = DBFactory.GetInstance(type);
@@ -48,6 +49,7 @@ namespace DataBaseWF
             return dataTable;
         }
 
+       
         public void ClearTable(DataGridView dgv)
         {
             dgv.DataSource = new DataTable();
