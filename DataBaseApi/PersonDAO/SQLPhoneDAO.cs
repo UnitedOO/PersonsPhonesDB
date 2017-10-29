@@ -11,6 +11,10 @@ namespace DataBaseApi.PersonDAO
     {
         protected string tablePhones = "";
 
+        public string GetTableName()
+        {
+            return tablePhones;
+        }
         public SQLPhoneDAO()
         {
             tablePhones = "Phones";
@@ -20,8 +24,8 @@ namespace DataBaseApi.PersonDAO
         {
             OpenConnection();
 
-            string cmd = $"INSERT INTO {tablePhones} (Id, Number, PersonId) " +
-                      $"VALUES ({null}, {phone.Number}, {phone.PersonId})";
+            string cmd = $"INSERT INTO {tablePhones} (Number, PersonId) " +
+                      $"VALUES ({phone.Number}, {phone.PersonId})";
             ExecuteCommand(cmd);
             
             CloseConnection();

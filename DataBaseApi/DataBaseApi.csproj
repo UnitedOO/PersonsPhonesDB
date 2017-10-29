@@ -71,6 +71,7 @@
     <Compile Include="PersonDAO\EFPersonDAO\PersonsPhonesContext.cs" />
     <Compile Include="PersonDAO\MockPersonDAO.cs" />
     <Compile Include="PersonDAO\MSPersonDAO\MSPersonDAO.cs" />
+    <Compile Include="PersonDAO\MSPersonDAO\MSPhoneDAO.cs" />
     <Compile Include="PersonDAO\SQLPhoneDAO.cs" />
     <Compile Include="PersonDAO\SQLPersonDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

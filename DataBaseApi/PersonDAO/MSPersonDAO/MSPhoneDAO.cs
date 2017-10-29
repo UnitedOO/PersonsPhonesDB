@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using DataBaseApi.Models;
 
 namespace DataBaseApi.PersonDAO.MSPersonDAO
 {
-    class MSPersonDAO : SQLPersonDAO
+    class MSPhoneDAO : SQLPhoneDAO
     {
         SqlConnection connection = null;
-        
-        public MSPersonDAO()
+
+        public MSPhoneDAO()
         {
-            this.phoneDao = new MSPhoneDAO();
             string strConn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" +
                              Path.GetFullPath(@"..\..\..\DataBaseApi\LocalDBs\PersonsPhonesDB.mdf") +
                              ";Integrated Security=True;";
@@ -44,28 +42,18 @@ namespace DataBaseApi.PersonDAO.MSPersonDAO
             return Convert.ToInt32(sqlCmd.ExecuteScalar());
         }
 
-        protected override List<Person> ReadData(string cmd)
+        protected override List<Phone> ReadData(string cmd)
         {
             SqlCommand sqlCmd = new SqlCommand(cmd, connection);
             SqlDataReader reader = sqlCmd.ExecuteReader();
 
-            List<Person> listPerson = new List<Person>();
-            Person currentPerson = null;
+            List<Phone> listPhone = new List<Phone>();
             while (reader.Read())
             {
-                if (currentPerson == null || currentPerson.Id != reader.GetInt32(0)) //determine by person id if current row is row of another person
-                {
-                    currentPerson = new Person(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
-                    listPerson.Add(currentPerson);
-                }
-                if (!reader.IsDBNull(4))
-                {
-                    Phone currentPhone = new Phone(reader.GetInt32(4), reader.GetString(5), reader.GetInt32(6));
-                    currentPerson.Phones.Add(currentPhone);
-                }
+                listPhone.Add(new Phone(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2)));
             }
             reader.Close();
-            return listPerson;
+            return listPhone;
         }
     }
 }

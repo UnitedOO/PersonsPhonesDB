@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DataBaseApi.Models;
 using DataBaseApi.PersonDAO;
 using DataBaseApi.PersonDAO.EFPersonDAO;
+using DataBaseApi.PersonDAO.MSPersonDAO;
 
 namespace DataBaseApi
 {
@@ -19,6 +20,7 @@ namespace DataBaseApi
             {
                 case "Mock": db = new MockPersonDAO(); break;
                 case "MS SQL EF": db = new EFPersonDAO(); break;
+                case "MS SQL": db = new MSPersonDAO(); break;
             }
             return db;
         }

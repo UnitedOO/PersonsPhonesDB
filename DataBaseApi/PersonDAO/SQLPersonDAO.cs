@@ -9,21 +9,22 @@ namespace DataBaseApi.PersonDAO
 {
     abstract class SQLPersonDAO : IDAO<Person>
     {
-        private SQLPhoneDAO phoneDao;
+        protected SQLPhoneDAO phoneDao;
 
         protected string tablePersons = "";
 
         public SQLPersonDAO()
         {
-            tablePersons = "Persons";
+            tablePersons = "People";
         }
 
         public void Create(Person person)
         {
             OpenConnection();
             string cmd =
-                $"INSERT INTO {tablePersons} (Id, FirstName, LastName, Age) " +
-                $"VALUES ({null}, '{person.FirstName}', '{person.LastName}', {person.Age})";
+                $"INSERT INTO {tablePersons} (FirstName, LastName, Age) " +
+                $"VALUES ('{person.FirstName}', '{person.LastName}', {person.Age});" +
+                "SELECT SCOPE_IDENTITY()";
             int personId = ExecuteCreate(cmd);
 
             foreach (var phone in person.Phones)
@@ -37,6 +38,10 @@ namespace DataBaseApi.PersonDAO
 
         public void Delete(Person person)
         {
+            foreach (var phone in person.Phones)
+            {
+                phoneDao.Delete(phone);
+            }
             OpenConnection();
             string cmd =
                 $"Delete FROM {tablePersons} " +
@@ -47,8 +52,7 @@ namespace DataBaseApi.PersonDAO
 
         public List<Person> Read()
         {
-            OpenConnection();
-            string cmd = $"SELECT * FROM {tablePersons};";
+            string cmd = $"SELECT * FROM {tablePersons} LEFT JOIN {phoneDao.GetTableName()} ON {tablePersons}.Id = {phoneDao.GetTableName()}.PersonId;";
             List<Person> listPerson = ReadData(cmd);
             CloseConnection();
             return listPerson;
@@ -56,6 +60,10 @@ namespace DataBaseApi.PersonDAO
 
         public void Update(Person person)
         {
+            foreach (var phone in person.Phones)
+            {
+                phoneDao.Update(phone);
+            }
             OpenConnection();
             string cmd =
                 $"UPDATE {tablePersons} " +
