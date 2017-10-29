@@ -9,13 +9,13 @@ namespace DataBaseApi.PersonDAO
 {
     abstract class SQLPersonDAO : IDAO<Person>
     {
+        private SQLPhoneDAO phoneDao;
+
         protected string tablePersons = "";
-        protected string tablePhones = "";
 
         public SQLPersonDAO()
         {
             tablePersons = "Persons";
-            tablePhones = "Phones";
         }
 
         public void Create(Person person)
@@ -28,9 +28,8 @@ namespace DataBaseApi.PersonDAO
 
             foreach (var phone in person.Phones)
             {
-                cmd = $"INSERT INTO {tablePhones} (Id, Number, PersonId) " +
-                      $"VALUES ({null}, {phone.Number}, {personId})";
-                ExecuteCommand(cmd);
+                phone.PersonId = personId; 
+                phoneDao.Create(phone);
             }
 
             CloseConnection();
