@@ -9,30 +9,32 @@ namespace DataBaseApi.PersonDAO
 {
     public class MockPersonDAO : IDAO<Person>
     {
+        private int countPerson = 0;
+        private int countPhone = 0;
         readonly SortedDictionary<int, Person> _people;
         public MockPersonDAO()
         {
             _people = new SortedDictionary<int, Person>();
-            Person person = new Person(1, "Tom", "Test", 25);
-            for (int i = 1; i < 4; i++)
+            Person person = new Person(0, "Tom", "Test", 25);
+            for (int i = 0; i < 3; i++)
             {
-                person.Phones.Add(new Phone(i, "+38095716596" + i, 1));
+                person.Phones.Add(new Phone(0, "+38095716596" + i, 1));
             }
-            _people.Add(person.Id, person);
+            Create(person);
 
-            person = new Person(2, "Bob", "Smith", 22);
-            for (int i = 4; i < 6; i++)
+            person = new Person(0, "Bob", "Smith", 22);
+            for (int i = 0; i < 2; i++)
             {
-                person.Phones.Add(new Phone(i, "+38095716596" + i, 2));
+                person.Phones.Add(new Phone(0, "+38095716596" + i, 2));
             }
-            _people.Add(person.Id, person);
+            Create(person);
 
-            person = new Person(3, "Vasya", "Ivanov", 12);
-            for (int i = 6; i < 9; i++)
+            person = new Person(0, "Vasya", "Ivanov", 12);
+            for (int i = 0; i < 3; i++)
             {
-                person.Phones.Add(new Phone(i, "+38095716596" + i, 3));
+                person.Phones.Add(new Phone(0, "+38095716596" + i, 3));
             }
-            _people.Add(person.Id, person);
+            Create(person);
         }
         public List<Person> Read()
         {
@@ -51,6 +53,11 @@ namespace DataBaseApi.PersonDAO
 
         public void Create(Person model)
         {
+            model.Id = ++countPerson;
+            foreach (var phone in model.Phones)
+            {
+                phone.Id = ++countPhone;
+            }
             _people.Add(model.Id, model);
         }
     }
