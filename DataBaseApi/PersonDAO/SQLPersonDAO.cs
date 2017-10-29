@@ -52,6 +52,7 @@ namespace DataBaseApi.PersonDAO
 
         public List<Person> Read()
         {
+            OpenConnection();
             string cmd = $"SELECT * FROM {tablePersons} LEFT JOIN {phoneDao.GetTableName()} ON {tablePersons}.Id = {phoneDao.GetTableName()}.PersonId;";
             List<Person> listPerson = ReadData(cmd);
             CloseConnection();
