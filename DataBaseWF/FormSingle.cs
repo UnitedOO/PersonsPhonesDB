@@ -14,7 +14,6 @@ namespace DataBaseWF
     public partial class FormSingle : Form
     {
         private Person person = null;
-        private Phone phone = null;
         public TableModel tableModel;
 
         public FormSingle(TableModel tableModel, Person person)
@@ -29,16 +28,15 @@ namespace DataBaseWF
                 btnCreate.Visible = false;
 
                 txtId.Text += person.Id.ToString();
-                txtFirstName.Text += person.FirstName;
-                txtLastName.Text += person.LastName;
                 txtAge.Text += person.Age.ToString();
             }
-            else
+            txtFirstName.Text += person.FirstName;
+            txtLastName.Text += person.LastName;
+
+            foreach (Phone phone in person.Phones)
             {
-                txtFirstName.Text += person.FirstName;
-                txtLastName.Text += person.LastName;
+                listPhones.Items.Add(phone.Number);
             }
-                   
         }
 
         private Person GetPerson()
@@ -46,6 +44,26 @@ namespace DataBaseWF
             person.FirstName = txtFirstName.Text;
             person.LastName = txtLastName.Text;
             person.Age = Int32.Parse(txtAge.Text);
+
+            List<Phone> newPhones = new List<Phone>();
+            foreach (string item in listPhones.Items)
+            {
+                foreach (Phone phone in person.Phones)
+                {
+                    if (item != phone.Number)
+                    {
+                        Phone newphone = new Phone();
+                        newphone.Id = 0;
+                        newphone.Number = item;
+                        newphone.Person = person;
+                        newPhones.Add(newphone);
+                    }
+                }              
+            }
+            foreach (Phone phone in newPhones)
+            {
+                person.Phones.Add(phone);
+            }
             return person;
         }
 

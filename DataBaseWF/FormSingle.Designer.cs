@@ -53,7 +53,7 @@
             this.listPhones.ItemHeight = 15;
             this.listPhones.Location = new System.Drawing.Point(84, 182);
             this.listPhones.Name = "listPhones";
-            this.listPhones.Size = new System.Drawing.Size(192, 79);
+            this.listPhones.Size = new System.Drawing.Size(191, 139);
             this.listPhones.TabIndex = 0;
             // 
             // btnAddPhone
