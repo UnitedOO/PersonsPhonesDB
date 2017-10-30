@@ -23,16 +23,18 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
         {
             using (PersonsPhonesContext context = new PersonsPhonesContext())
             {
+                foreach (var phone in model.Phones)
+                {
+                    if (phone.Id == 0)
+                    {
+                        phone.Person = null;
+                        phone.PersonId = model.Id;
+                        phoneDAO.Create(phone);
+                    }
+                }
                 Person original = context.Persons.FirstOrDefault(x => x.Id == model.Id);
                 context.Entry(original).CurrentValues.SetValues(model);
                 context.SaveChanges();
-                //foreach (var phone in model.Phones)
-                //{
-                //    if (phone.Id == 0)
-                //        phoneDAO.Create(phone);
-                //    else
-                //        phoneDAO.Update(phone);
-                //}
             }
         }
 
@@ -56,11 +58,6 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
             {
                 context.Persons.Add(model);
                 context.SaveChanges();
-                //foreach (var phone in model.Phones)
-                //{
-                //    phone.PersonId = model.Id;
-                //    phoneDAO.Create(phone);
-                //}
             }
         }
     }
