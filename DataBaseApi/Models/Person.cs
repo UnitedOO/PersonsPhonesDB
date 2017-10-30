@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseApi.Models
 {
@@ -12,6 +13,7 @@ namespace DataBaseApi.Models
 
         public int Age { get; set; }
 
+        [InverseProperty("Person")]
         public virtual ICollection<Phone> Phones { get; set; }
 
         public Person()

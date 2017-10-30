@@ -11,9 +11,9 @@ namespace DataBaseApi.Models
         [Required]
         public string Number { get; set; }
 
-        [ForeignKey(nameof(Person))]
         public int PersonId { get; set; }
 
+        [ForeignKey("PersonId")]
         public virtual Person Person { get; set; }
 
         public Phone()
