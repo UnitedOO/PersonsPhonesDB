@@ -45,23 +45,12 @@ namespace DataBaseWF
             person.LastName = txtLastName.Text;
             person.Age = Int32.Parse(txtAge.Text);
 
-            List<Phone> newPhones = new List<Phone>();
-            foreach (string item in listPhones.Items)
+            foreach (string phoneNumber in listPhones.Items)
             {
-                foreach (Phone phone in person.Phones)
-                {
-                    if (item != phone.Number)
-                    {
-                        Phone newphone = new Phone();
-                        newphone.Id = 0;
-                        newphone.Number = item;
-                        newphone.Person = person;
-                        newPhones.Add(newphone);
-                    }
-                }              
-            }
-            foreach (Phone phone in newPhones)
-            {
+                Phone phone = new Phone();
+                phone.Id = 0;
+                phone.Number = phoneNumber;
+                phone.Person = person;
                 person.Phones.Add(phone);
             }
             return person;

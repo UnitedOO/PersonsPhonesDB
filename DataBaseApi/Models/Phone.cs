@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseApi.Models
@@ -24,6 +25,18 @@ namespace DataBaseApi.Models
             Id = id;
             Number = number;
             PersonId = personId;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var phone = obj as Phone;
+            return phone != null &&
+                   Number == phone.Number;
+        }
+
+        public override int GetHashCode()
+        {
+            return 187193536 + EqualityComparer<string>.Default.GetHashCode(Number);
         }
     }
 }
