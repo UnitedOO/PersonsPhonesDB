@@ -28,12 +28,6 @@ namespace DataBaseWF
 
         }
 
-        private Person GetPerson()
-        {
-
-            return new Person();
-        }
-
         private void btncreate_Click(object sender, EventArgs e)
         {
             FormSingle fSingle = new FormSingle(tableModel, new Person(0, "", "", 0));
@@ -63,6 +57,20 @@ namespace DataBaseWF
                     fSingle.Show();
                 }
             }
+        }
+
+        private void btndelete_Click(object sender, EventArgs e)
+        {
+            int index = (int)dataGridDB.CurrentCell.RowIndex;
+            int id = Int32.Parse(dataGridDB.Rows[index].Cells[0].Value.ToString());
+            foreach (Person p in tableModel.ReturnPersons())
+            {
+                if (id == p.Id)
+                {
+                    tableModel.Delete(p);
+                }
+            }
+            dataGridDB.DataSource = tableModel.Read();
         }
     }
 }

@@ -26,6 +26,11 @@ namespace DataBaseWF
             db.Update(person);
         }
 
+        public void Delete(Person person)
+        {
+            db.Delete(person);
+        }
+
         public DataTable Read()
         {
             DataTable dataTable = new DataTable();

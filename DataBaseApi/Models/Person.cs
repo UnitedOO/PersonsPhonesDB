@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseApi.Models
 {
@@ -12,6 +13,7 @@ namespace DataBaseApi.Models
 
         public int Age { get; set; }
 
+        [InverseProperty("Person")]
         public virtual ICollection<Phone> Phones { get; set; }
 
         public Person()
@@ -26,6 +28,22 @@ namespace DataBaseApi.Models
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Age = age;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var person = obj as Person;
+            return person != null &&
+                   FirstName == person.FirstName &&
+                   LastName == person.LastName;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 1938039292;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FirstName);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LastName);
+            return hashCode;
         }
     }
 }
