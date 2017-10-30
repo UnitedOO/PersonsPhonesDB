@@ -63,7 +63,13 @@ namespace DataBaseApi.PersonDAO
         {
             foreach (var phone in person.Phones)
             {
-                phoneDao.Update(phone);
+                if (phone.Id == 0)
+                {
+                    phone.PersonId = person.Id;
+                    phoneDao.Create(phone);
+                }
+                else
+                    phoneDao.Update(phone);
             }
             OpenConnection();
             string cmd =
