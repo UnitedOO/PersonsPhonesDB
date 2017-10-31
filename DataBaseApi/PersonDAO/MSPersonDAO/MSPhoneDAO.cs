@@ -55,5 +55,10 @@ namespace DataBaseApi.PersonDAO.MSPersonDAO
             reader.Close();
             return listPhone;
         }
+
+        public override List<Phone> Search(string searchStr)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

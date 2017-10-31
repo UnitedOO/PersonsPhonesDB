@@ -18,7 +18,7 @@ namespace DataBaseWF
 
         public void Create(Person person)
         {
-           db.Create(person);
+            db.Create(person);
         }
 
         public void Update(Person person)
@@ -54,7 +54,29 @@ namespace DataBaseWF
             return dataTable;
         }
 
-       
+        public DataTable Search(string searchStr)
+        {
+            DataTable dataTable = new DataTable();
+            List<Person> listPerson = db.Search(searchStr);
+
+            dataTable.Columns.Add(new DataColumn("Id"));
+            dataTable.Columns.Add(new DataColumn("FirstName"));
+            dataTable.Columns.Add(new DataColumn("LastName"));
+            dataTable.Columns.Add(new DataColumn("Age"));
+
+            foreach (Person person in listPerson)
+            {
+                DataRow row = dataTable.NewRow();
+                row[0] = person.Id;
+                row[1] = person.FirstName;
+                row[2] = person.LastName;
+                row[3] = person.Age;
+                dataTable.Rows.Add(row);
+            }
+
+            return dataTable;
+        }
+
         public void ClearTable(DataGridView dgv)
         {
             dgv.DataSource = new DataTable();

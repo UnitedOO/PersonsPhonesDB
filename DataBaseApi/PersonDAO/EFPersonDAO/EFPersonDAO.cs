@@ -15,7 +15,7 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
         {
             using (PersonsPhonesContext context = new PersonsPhonesContext())
             {
-                return context.Persons.Include(p=>p.Phones).ToList();
+                return context.Persons.Include(p => p.Phones).ToList();
             }
         }
 
@@ -59,6 +59,20 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
                 context.Persons.Add(model);
                 context.SaveChanges();
             }
+        }
+
+        public List<Person> Search(string searchStr)
+        {
+            List<Person> listPerson = Read();
+            List<Person> list = new List<Person>();
+            foreach (Person p in listPerson)
+            {
+                if (searchStr == p.Id.ToString() || searchStr == p.FirstName || searchStr == p.LastName || searchStr == p.Age.ToString())
+                {
+                    list.Add(p);
+                }
+            }
+            return list;
         }
     }
 }

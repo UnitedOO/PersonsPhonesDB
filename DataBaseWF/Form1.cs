@@ -72,5 +72,12 @@ namespace DataBaseWF
             }
             dataGridDB.DataSource = tableModel.Read();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dataGridDB.DataSource = "";
+            dataGridDB.DataSource = tableModel.Search(txtSearch.Text);
+            txtSearch.Text = "";
+        }
     }
 }

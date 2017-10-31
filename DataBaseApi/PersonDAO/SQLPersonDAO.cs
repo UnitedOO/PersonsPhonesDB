@@ -29,7 +29,7 @@ namespace DataBaseApi.PersonDAO
 
             foreach (var phone in person.Phones)
             {
-                phone.PersonId = personId; 
+                phone.PersonId = personId;
                 phoneDao.Create(phone);
             }
 
@@ -77,7 +77,7 @@ namespace DataBaseApi.PersonDAO
                 $"SET FirstName = '{person.FirstName}', LastName='{person.LastName}', Age={person.Age} " +
                 $"WHERE Id = {person.Id};";
             ExecuteCommand(cmd);
-            
+
             CloseConnection();
         }
 
@@ -86,5 +86,19 @@ namespace DataBaseApi.PersonDAO
         abstract protected void ExecuteCommand(string cmd);
         abstract protected int ExecuteCreate(string cmd);
         abstract protected List<Person> ReadData(string cmd);
+
+        public List<Person> Search(string searchStr)
+        {
+            List<Person> listPerson = Read();
+            List<Person> list = new List<Person>();
+            foreach (Person p in listPerson)
+            {
+                if (searchStr == p.Id.ToString() || searchStr == p.FirstName || searchStr == p.LastName || searchStr == p.Age.ToString())
+                {
+                    list.Add(p);
+                }
+            }
+            return list;
+        }
     }
 }

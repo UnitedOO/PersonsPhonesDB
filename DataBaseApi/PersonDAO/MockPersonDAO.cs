@@ -60,5 +60,18 @@ namespace DataBaseApi.PersonDAO
             }
             _people.Add(model.Id, model);
         }
+
+        public List<Person> Search(string searchStr)
+        {
+            List<Person> list = new List<Person>();
+            foreach (Person p in _people.Values)
+            {
+                if (searchStr == p.Id.ToString() || searchStr == p.FirstName || searchStr == p.LastName || searchStr == p.Age.ToString())
+                {
+                    list.Add(p);
+                }
+            }
+            return list;
+        }
     }
 }

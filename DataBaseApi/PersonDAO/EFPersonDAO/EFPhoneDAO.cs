@@ -45,5 +45,10 @@ namespace DataBaseApi.PersonDAO.EFPersonDAO
                 context.SaveChanges();
             }
         }
+
+        public List<Phone> Search(string searchStr)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace DataBaseApi
         void Update(TModel model);
         void Delete(TModel model);
         void Create(TModel model);
+        List<TModel> Search(string searchStr);
     }
 }

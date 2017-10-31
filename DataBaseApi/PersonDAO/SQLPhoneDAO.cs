@@ -67,5 +67,6 @@ namespace DataBaseApi.PersonDAO
         abstract protected void ExecuteCommand(string cmd);
         abstract protected int ExecuteCreate(string cmd);
         abstract protected List<Phone> ReadData(string cmd);
+        public abstract List<Phone> Search(string searchStr);
     }
 }
