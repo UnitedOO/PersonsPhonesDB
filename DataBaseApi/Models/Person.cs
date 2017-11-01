@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseApi.Models
@@ -28,6 +29,16 @@ namespace DataBaseApi.Models
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Age = age;
+        }
+
+        public static int CompareById(Person x, Person y)
+        {
+            if (x.Id > y.Id)
+                return 1;
+            else if (x.Id < y.Id)
+                return -1;
+            else
+                return 0;
         }
 
         public override bool Equals(object obj)

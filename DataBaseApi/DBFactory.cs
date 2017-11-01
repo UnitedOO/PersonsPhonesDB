@@ -7,6 +7,7 @@ using DataBaseApi.Models;
 using DataBaseApi.PersonDAO;
 using DataBaseApi.PersonDAO.EFPersonDAO;
 using DataBaseApi.PersonDAO.MSPersonDAO;
+using DataBaseApi.PersonDAO.FilesLib;
 
 namespace DataBaseApi
 {
@@ -21,6 +22,9 @@ namespace DataBaseApi
                 case "Mock": db = new MockPersonDAO(); break;
                 case "MS SQL EF": db = new EFPersonDAO(); break;
                 case "MS SQL": db = new MSPersonDAO(); break;
+                case "JSON_L": db = new JsonLibPersonDAO(); break;
+                case "XML_L": db = new XmlLibPersonDAO(); break;
+                case "YAML_L": db = new YamlLibPersonDAO(); break;
             }
             return db;
         }
