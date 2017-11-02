@@ -54,6 +54,9 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.5.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.4.5.14\lib\net45\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -75,6 +78,8 @@
     <Compile Include="PersonDAO\EFPersonDAO\EFPersonDAO.cs" />
     <Compile Include="PersonDAO\EFPersonDAO\EFPhoneDAO.cs" />
     <Compile Include="PersonDAO\EFPersonDAO\PersonsPhonesContext.cs" />
+    <Compile Include="PersonDAO\FilesLib\BinaryLibPersonDAO.cs" />
+    <Compile Include="PersonDAO\FilesLib\CsvLibPersonDAO.cs" />
     <Compile Include="PersonDAO\FilesLib\JsonLibPersonDAO.cs" />
     <Compile Include="PersonDAO\FilesLib\XmlLibPersonDAO.cs" />
     <Compile Include="PersonDAO\FilesLib\YamlLibPersonDAO.cs" />
@@ -111,5 +116,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

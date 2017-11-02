@@ -25,6 +25,8 @@ namespace DataBaseApi
                 case "JSON_L": db = new JsonLibPersonDAO(); break;
                 case "XML_L": db = new XmlLibPersonDAO(); break;
                 case "YAML_L": db = new YamlLibPersonDAO(); break;
+                case "CSV_L": db = new CsvLibPersonDAO(); break;
+                case "BinaryL": db = new BinaryLibPersonDAO(); break;
             }
             return db;
         }
